@@ -9,11 +9,11 @@ export default function decorate(block) {
   row.classList.add('hero-row');
 
   const cols = [...row.children];
-  cols.forEach((col, index) => {
+  cols.forEach((col) => {
     const hasPicture = col.querySelector('picture');
     const hasHeading = col.querySelector('h1, h2, h3, h4, h5, h6');
 
-    if (hasPicture && !hasHeading && (cols.length === 1 || index > 0)) {
+    if (hasPicture && !hasHeading) {
       col.classList.add('hero-image');
     } else {
       col.classList.add('hero-content');
@@ -22,6 +22,14 @@ export default function decorate(block) {
 
   const contentCol = row.querySelector('.hero-content');
   if (contentCol) {
+    const heading = contentCol.querySelector('h1, h2, h3, h4, h5, h6');
+    if (heading && heading.previousElementSibling?.tagName === 'P') {
+      const prevP = heading.previousElementSibling;
+      if (!prevP.querySelector('a, picture, img')) {
+        prevP.classList.add('hero-eyebrow');
+      }
+    }
+
     const cta = contentCol.querySelector('a[href]');
     if (cta) {
       cta.classList.add('hero-cta');
@@ -31,4 +39,3 @@ export default function decorate(block) {
     }
   }
 }
-
