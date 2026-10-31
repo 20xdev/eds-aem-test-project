@@ -1,37 +1,90 @@
-.hero-container .hero-wrapper {
-  max-width: unset;
-  padding: 0;
-}
-
 .hero {
-  position: relative;
-  padding: 40px 24px;
-  min-height: 300px;
+  background-color: var(--light-color);
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 32px 24px;
 }
 
-.hero h1 {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  color: var(--background-color);
+.hero .hero-row {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.hero picture {
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  object-fit: cover;
-  box-sizing: border-box;
+.hero .hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
 }
 
-.hero img {
-  object-fit: cover;
+.hero .hero-content h1,
+.hero .hero-content h2,
+.hero .hero-content h3 {
+  margin: 0;
+  color: var(--text-color);
+  font-size: var(--heading-font-size-xxl);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.hero .hero-content p {
+  margin: 0;
+  color: var(--dark-color);
+  font-size: var(--body-font-size-m);
+  line-height: 1.6;
+}
+
+.hero .hero-content p.button-wrapper {
+  margin-top: 8px;
+}
+
+.hero .hero-content a.hero-cta:any-link {
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 0.65em 1.5em;
+  font-weight: 600;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.hero .hero-content a.hero-cta:focus-visible {
+  outline: 3px solid var(--link-color);
+  outline-offset: 3px;
+}
+
+.hero .hero-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero .hero-image p {
+  margin: 0;
   width: 100%;
-  height: 100%;
+}
+
+.hero .hero-image picture {
+  display: block;
+  width: 100%;
+}
+
+.hero .hero-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 @media (width >= 900px) {
   .hero {
-    padding: 40px 32px;
+    padding: 48px 40px;
+  }
+
+  .hero .hero-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 48px;
   }
 }
